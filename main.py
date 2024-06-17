@@ -14,16 +14,21 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score, m
 import matplotlib as mpl
 import seaborn as sns
 
+import os
 import matplotlib.font_manager as fm
 
+def fontRegistered():
+    font_dirs = [os.getcwd()]
+    font_files = fm.findSystemFonts(fontpaths=font_dirs)
+
+    for font_file in font_files:
+        fm.fontManager.addfont(font_file)
+    fm._load_fontmanager(try_read_cache=False)
+
+fontRegistered()
+
+plt.rc('font', family='NanumGothic')
 # 한글 폰트 설정
-font_path = 'NanumGothic.ttf'  # 다운받은 폰트 파일 경로
-fm.fontManager.addfont(font_path)
-fontprop = fm.FontProperties(fname=font_path)
-
-
-plt.rc('font', family=fontprop.get_name())
-plt.rc('axes', unicode_minus=False)
 
 
 # 데이터 불러오기
