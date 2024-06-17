@@ -18,14 +18,12 @@ import matplotlib.font_manager as fm
 
 # 한글 폰트 설정
 font_path = 'NanumGothic.ttf'  # 다운받은 폰트 파일 경로
+fm.fontManager.addfont(font_path)
 fontprop = fm.FontProperties(fname=font_path)
 
 
-plt.rc('font', family='Malgun Gothic')
+plt.rc('font', family=fontprop.get_name())
 plt.rc('axes', unicode_minus=False)
-
-#plt.rcParams['font.family'] = 'Malgun Gothic'
-#plt.rcParams['axes.unicode_minus'] = False  # 한글 폰트 사용 시 마이너스 폰트 깨지는 문제 방지
 
 
 # 데이터 불러오기
